@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const userRoutes = require('./routes/user.routes');
 
 const Employee = require('./models/Employee');
 
@@ -41,5 +42,6 @@ app.delete('/api/employees/:id', async (req, res) => {
   await Employee.findByIdAndDelete(req.params.id);
   res.json({ message: 'Employee deleted' });
 });
+app.use('/api/users', userRoutes);
 
 app.listen(5000, () => console.log('Server running on port 5000'));
