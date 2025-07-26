@@ -4,6 +4,7 @@ const cors = require('cors');
 const userRoutes = require('./routes/user.routes');
 
 const Employee = require('./models/Employee');
+const authRoutes = require('./routes/auth.routes');
 
 const app = express();
 app.use(cors());
@@ -43,5 +44,6 @@ app.delete('/api/employees/:id', async (req, res) => {
   res.json({ message: 'Employee deleted' });
 });
 app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 app.listen(5000, () => console.log('Server running on port 5000'));
